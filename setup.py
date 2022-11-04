@@ -8,8 +8,6 @@ REQUIREMENTS = [
     'eth_keys',
     'eth-account>=0.4.0,<=0.7.0',  # TODO: This was <0.6.0, and I don't know why
     'mpmath>=1.0.0',
-    'requests-mock==1.6.0',
-    'requests>=2.22.0,<3.0.0',
     'setuptools>=50.3.2',
     'sympy>=1.6',
     'tox>=3.13.2',
@@ -18,7 +16,7 @@ REQUIREMENTS = [
 
 setup(
     name='dydx-v3-python',
-    version='1.6.0',
+    version='1.9.0',
     packages=find_packages(),
     package_data={
         'dydx3': [

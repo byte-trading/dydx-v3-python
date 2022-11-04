@@ -7,6 +7,7 @@ import aiohttp
 from dydx3.constants import COLLATERAL_ASSET
 from dydx3.constants import COLLATERAL_TOKEN_DECIMALS
 from dydx3.constants import FACT_REGISTRY_CONTRACT
+from dydx3.constants import NETWORK_ID_GOERLI
 from dydx3.constants import TIME_IN_FORCE_GTT
 from dydx3.constants import TOKEN_CONTRACTS
 from dydx3.helpers.db import get_account_id
@@ -1130,11 +1131,33 @@ class Private(object):
             },
         )
 
+    async def get_liquidity_provider_rewards_v2(
+        self,
+        epoch=None,
+    ):
+        '''
+        Get liquidity rewards
+
+        :param epoch: optional
+        :type epoch: int
+
+        :returns: LiquidityRewards
+
+        :raises: DydxAPIError
+        '''
+        return await self._get(
+            'rewards/liquidity-provider',
+            {
+                'epoch': epoch,
+            },
+        )
+
     async def get_liquidity_provider_rewards(
         self,
         epoch=None,
     ):
         '''
+        (Deprecated, please use get_liquidity_provider_rewards_v2)
         Get liquidity rewards
 
         :param epoch: optional
@@ -1174,8 +1197,8 @@ class Private(object):
 
         :raises: DydxAPIError
         '''
-        if (self.network_id != 3):
-            raise ValueError('network_id is not Ropsten')
+        if (self.network_id != NETWORK_ID_GOERLI):
+            raise ValueError('network_id is not Goerli')
 
         return await self._post('testnet/tokens', {})
 
