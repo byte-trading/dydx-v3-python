@@ -5,10 +5,13 @@ LONG_DESCRIPTION = open('README.md', 'r').read()
 REQUIREMENTS = [
     'dateparser>=1.0.0',
     'ecdsa>=0.16.0',
+    'eth_keys',
+    'eth-account>=0.4.0,<=0.7.0',  # TODO: This was <0.6.0, and I don't know why
     'mpmath>=1.0.0',
     'setuptools>=50.3.2',
     'sympy>=1.6',
     'tox>=3.13.2',
+    'web3>=5.0.0',
 ]
 
 setup(
